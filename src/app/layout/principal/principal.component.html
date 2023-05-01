@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <p class="navbar-brand mb-2">ESCUELA MATERNAL N° 1</p>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/home">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/institucion">NUESTRA INSTITUCIÓN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contacto" href="#">CONTACTO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login" href="#">INICIAR SESIÓN</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="fondo container-fluid">
+    <div class="row d-flex align-items-center text-center" style="padding-top: 6rem;">
+        <div class="col-md-3">
+            <img src="\assets\img\logojardin.png" alt="logojardin" width="200" height="200">
+        </div>
+        <div class="col-md-9">
+            <h1 class="mensaje-bienvenida ">¡BIENVENIDOS a nuestra App!</h1>
+            <h3 style="color: whitesmoke; text-shadow: 1px 1px rgb(161, 159, 159); ">Conectando a familias y escuela para una educación más efectiva y cercana</h3>
+        </div>
+    </div>
+</header>
+<router-outlet></router-outlet>
+
+
+<footer class="py-2 bg-dark text-white ">
+    <div class="container ">
+        <div class="row align-items-center ">
+            <div class="col-lg-9 text-lg-start ">Copyright &copy; MaternalConnect 2023</div>
+            <div class="col-lg-3 my-3 my-lg-0 ">
+                <a class="btn btn-dark " href="#! "><i class="fab fa-twitter "></i></a>
+                <a class="btn btn-dark " href="#! "><i class="fab fa-facebook-f "></i></a>
+                <a class="btn btn-dark " href="#! "><i class="fab fa-linkedin-in "></i></a>
+            </div>
+        </div>
+    </div>
+</footer>

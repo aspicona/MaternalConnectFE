@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+header.fondo {
+    height: 20rem;
+    background-image: url("src\assets\img\fondobanner.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+}
+
+h1.mensaje-bienvenida {
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+    color: black;
+    text-shadow: 2px 2px rgb(161, 159, 159);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

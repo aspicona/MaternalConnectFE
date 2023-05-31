@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginCommand } from 'src/app/models/loginCommand';
@@ -56,6 +56,31 @@ export class LoginComponent implements OnInit{
     this.fieldTextType = !this.fieldTextType;
   }
 
+  // onEnviar(usuario: LoginCommand) {
+  //   if (this.loginForm.valid) {
+  //     console.log(this.loginForm.value);
+  
+  //     this.authService.login(usuario).subscribe({
+  //       next: (data) => {
+  //         console.log("DATA: " + JSON.stringify(data));
+          
+  //         localStorage.setItem("auth-token", JSON.stringify(data.token));
+  //         localStorage.setItem("auth-id", JSON.stringify(data.idUsuario));
+  //         this.authService.setLogueado(true);
+  //         this.authService.currentUser = data;
+
+  //         console.log(this.authService.currentUser)
+  //         this.router.navigate(["menuLateral"]);
+  //       },
+  //       error: (error) => {
+  //         this.error = error;
+  //       }
+  //     });
+  //   } else {
+  //     this.loginForm.markAllAsTouched();
+  //   }
+  // }
+
   onEnviar(usuario: LoginCommand) {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
@@ -64,9 +89,12 @@ export class LoginComponent implements OnInit{
         next: (data) => {
           console.log("DATA: " + JSON.stringify(data));
           
-          localStorage.setItem("auth-token", JSON.stringify(data.token));
-          localStorage.setItem("auth-id", JSON.stringify(data.idUsuario));
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", data.idUsuario.toString());
+          
+          console.log(localStorage)
           this.router.navigate(["menuLateral"]);
+          
         },
         error: (error) => {
           this.error = error;
@@ -76,5 +104,4 @@ export class LoginComponent implements OnInit{
       this.loginForm.markAllAsTouched();
     }
   }
-
 }

@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mt-5">
+                <div class="card-header">
+                    Nuevo Usuario
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                            <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuario" formControlName="nombreUsuario">
+                            <div *ngIf="userForm.controls['nombreUsuario'].invalid && (userForm.controls['nombreUsuario'].dirty || userForm.controls['nombreUsuario'].touched)" class="text-danger">
+                                <div *ngIf="userForm.controls['nombreUsuario'].errors?.['required']">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="clave" class="form-label">Clave</label>
+                            <input type="password" class="form-control" id="clave" formControlName="clave">
+                            <div *ngIf="userForm.controls['clave'].invalid && (userForm.controls['clave'].dirty || userForm.controls['clave'].touched)" class="text-danger">
+                                <div *ngIf="userForm.controls['clave'].errors?.['required']">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" formControlName="email">
+                            <div *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)" class="text-danger">
+                                <div *ngIf="userForm.controls['email'].errors?.['required']">
+                                    Este campo es requerido.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="idRol" class="form-label">Rol</label>
+                            <select class="form-select" id="idRol" formControlName="idRol">
+                                <option value="">Selecciona un rol</option>
+                                <option *ngFor="let rol of roles" [value]="rol.id">{{rol.nombre}}</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaCreacion" class="form-label">Fecha de creación</label>
+                            <input type="datetime-local" class="form-control" id="fechaCreacion" formControlName="fechaCreacion">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

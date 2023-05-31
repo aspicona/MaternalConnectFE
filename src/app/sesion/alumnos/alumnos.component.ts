@@ -1,0 +1,19 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-alumnos',
+  templateUrl: './alumnos.component.html',
+  styleUrls: ['./alumnos.component.css']
+})
+export class AlumnosComponent implements OnInit {
+
+  alumnos: any[]=[];
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  editarAlumno(alumno: any){}
+
+  eliminarAlumno(alumno: any){}
+}

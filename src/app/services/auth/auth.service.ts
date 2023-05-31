@@ -1,52 +1,61 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { HttpClient} from '@angular/common/http';
 import { LoginRequest } from 'src/app/models/loginRequest';
 import { LoginCommand } from 'src/app/models/loginCommand';
 
-const TOKEN_KEY = 'auth-token';
-const TOKEN_KEY2 = 'auth-id';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService implements OnInit{
-  url="https://localhost:7128/api/Usuario/login";
-  currentUserSubject!: BehaviorSubject<LoginRequest>;
-  currentUser!: Observable<LoginRequest>;
-  loggedIn= new BehaviorSubject<boolean>(false);
+  private readonly TOKEN_KEY = 'token';
+  private readonly USER_KEY = 'user';
+  
 
+  url="https://localhost:7128/api/Usuario/login";
+  
   constructor(private http:HttpClient) {
-    console.log("AUTH SERVICE WORKING");  
+    localStorage.clear();
+    console.log("AUTH SERVICE WORKING");
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USER_KEY); 
   }
 
   ngOnInit(): void {
-    const storedToken = localStorage.getItem(TOKEN_KEY);
-    if (storedToken) {
-      this.currentUserSubject = new BehaviorSubject<LoginRequest>(JSON.parse(storedToken));
-      this.currentUser = this.currentUserSubject.asObservable();
-    }
+    
+  
   }
 
   login(usuario: LoginCommand): Observable<any> {
     const headers = { 'content-type': 'application/json' };
-    return this.http.post(this.url, usuario,{ 'headers': headers } )    
+    return this.http.post<any>(this.url, usuario, { headers: headers }).pipe(
+      tap(data => {
+        localStorage.setItem(this.TOKEN_KEY, data.token);
+        localStorage.setItem(this.USER_KEY, JSON.stringify(data));
+      })
+    );
   }
 
-  get usuarioAutenticado(): LoginRequest {
-    return this.currentUserSubject.value;
+  get usuarioAutenticado(): any {
+    const user = localStorage.getItem(this.USER_KEY);
+    return user ? JSON.parse(user) : null;
   }
 
-  get estaAutenticado(): Observable<boolean> {
-    return this.loggedIn.asObservable();
+  estaAutenticado(): boolean {
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    return !!token; // Devuelve true si el token existe, de lo contrario devuelve false
   }
 
-   logOut(): void {
-    window.sessionStorage.clear();
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(TOKEN_KEY2);
-    this.loggedIn.next(false);
+  logOut(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    localStorage.removeItem(this.USER_KEY);
   }
+
+  // isLogueado(): boolean {
+  //   return this.estaAutenticado;
+  // }
+
 }

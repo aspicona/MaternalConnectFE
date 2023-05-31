@@ -1,0 +1,36 @@
+<div class="container my-4">
+    <h2>Lista de Docentes</h2>
+    <div class="row my-2">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar por nombre, especialidad o email">
+                <button class="btn btn-outline-secondary" type="button">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let docente of docentes">
+                <td>{{docente.nombre}}</td>
+                <td>{{docente.especialidad}}</td>
+                <td>{{docente.email}}</td>
+                <td>
+                    <a href="#" (click)="editarDocente(docente)">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="#" (click)="eliminarDocente(docente)">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

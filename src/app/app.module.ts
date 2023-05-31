@@ -13,6 +13,15 @@ import { DashboardComponent } from './sesion/dashboard/dashboard.component';
 import { PrincipalComponent } from './layout/principal/principal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { UsuariosFormsComponent } from './sesion/usuarios-forms/usuarios-forms.component';
+import { SalasFormsComponent } from './sesion/salas-forms/salas-forms.component';
+import { NoticiasFormsComponent } from './sesion/noticias-forms/noticias-forms.component';
+import { AlumnosFormsComponent } from './sesion/alumnos-forms/alumnos-forms.component';
+import { DocentesFormsComponent } from './sesion/docentes-forms/docentes-forms.component';
+import { UsuariosComponent } from './sesion/usuarios/usuarios.component';
+import { SalasComponent } from './sesion/salas/salas.component';
+import { AlumnosComponent } from './sesion/alumnos/alumnos.component';
+import { DocentesComponent } from './sesion/docentes/docentes.component';
 
 
 @NgModule({
@@ -24,7 +33,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     HomeComponent,
     MenuLateralComponent,
     DashboardComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    UsuariosFormsComponent,
+    SalasFormsComponent,
+    NoticiasFormsComponent,
+    AlumnosFormsComponent,
+    DocentesFormsComponent,
+    UsuariosComponent,
+    SalasComponent,
+    AlumnosComponent,
+    DocentesComponent
     
   ],
   imports: [

@@ -1,0 +1,40 @@
+<div class="container my-4">
+    <h2>Lista de Usuarios</h2>
+    <div class="row my-2">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar por nombre de usuario, email o rol" [(ngModel)]="busqueda">
+                <button class="btn btn-outline-secondary" type="button" (click)="buscar()">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre Usuario</th>
+                <th>Clave</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Fecha Creacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.nombreUsuario}}</td>
+                <td>{{usuario.clave}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.RolSeleccionado.nombre}}</td>
+                <td>{{usuario.fechaCreacion}}</td>
+                <td>
+                    <a href="#" (click)="editarUsuario(usuario)">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="#" (click)="eliminarUsuario(usuario)">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,34 @@
+<div class="container my-4">
+    <h2>Lista de Estudiantes</h2>
+    <div class="row my-2">
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar por nombre o sala actual">
+                <button class="btn btn-outline-secondary" type="button">Buscar</button>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Sala Actual</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alumno of alumnos">
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.salaActual}}</td>
+                <td>
+                    <a href="#" (click)="editarAlumno(alumno)">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <a href="#" (click)="eliminarAlumno(alumno)">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
